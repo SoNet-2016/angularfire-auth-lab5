@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="col-xs-12">
+        <ul class="media-list">
+            <li class="media" ng-repeat="pizza in pizzas | orderBy:orderProp">
+                <a class="plain-link" href="#/pizzas/{{pizza.$id}}">
+                    <div class="media-left">
+                        <img class="media-object" ng-src="{{pizza.image}}" alt="{{pizza.name}}">
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading"><strong>{{pizza.name}}</strong></h4>
+                        <p>{{pizza.pizzeria}}</p>
+                    </div>
+                </a>
+                <hr/>
+            </li>
+        </ul>
+    </div>
+</div>
