@@ -93,25 +93,25 @@
 
 15. Modifichiamo il blocco "config" del modulo `pizzApp.pizza.details` (definito in pizza-detail.js) in questo modo:
 
-        ```
-        .config(['$routeProvider', function($routeProvider) {
-            $routeProvider.when('/pizzas/:pizzaId', {
-                templateUrl: 'pizza-detail/pizza-detail.html',
-                controller: 'PizzaDetailCtrl',
-                resolve: {
-                    // controller will not be loaded until $requireAuth resolves
-                    // Auth refers to our $firebaseAuth wrapper in app.js
-                    'currentAuth': ['Auth', function(Auth) {
-                        // $requireAuth returns a promise so the resolve waits for it to complete
-                        // If the promise is rejected, it will throw a $stateChangeError
-                        return Auth.$requireAuth();
-                    }]
-                }
-            });
-        }])
-        ```
+    ```
+    .config(['$routeProvider', function($routeProvider) {
+        $routeProvider.when('/pizzas/:pizzaId', {
+            templateUrl: 'pizza-detail/pizza-detail.html',
+            controller: 'PizzaDetailCtrl',
+            resolve: {
+                // controller will not be loaded until $requireAuth resolves
+                // Auth refers to our $firebaseAuth wrapper in app.js
+                'currentAuth': ['Auth', function(Auth) {
+                    // $requireAuth returns a promise so the resolve waits for it to complete
+                    // If the promise is rejected, it will throw a $stateChangeError
+                    return Auth.$requireAuth();
+                }]
+            }
+        });
+    }])
+    ```
 
-        Il codice riportato fa in modo che il controller non venga caricato (e quindi che l'utente venga rimandato al login) quando l'autenticazione non è ancora stata effettuata.
+    Il codice riportato fa in modo che il controller non venga caricato (e quindi che l'utente venga rimandato al login) quando l'autenticazione non è ancora stata effettuata.
 
 16. Creiamo la pagina di login seguendo i seguenti passi:
   * creiamo la cartella `login`
@@ -139,7 +139,7 @@
       </form>
       ```
 
-  * creiamo lo script `login.js` e creiamo il modulo `login`.
+  * creiamo il controlloer `login.js` e creiamo il modulo `login`.
 
      Il controller del modulo deve:
      1. verificare che l'autenticazione non sia stata già effettuata,
